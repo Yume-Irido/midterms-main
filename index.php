@@ -15,17 +15,25 @@ $loginError = "";
 $emailError = "";
 $passwordError = "";
 
+// If user is already logged in, redirect them to the dashboard
+if (isset($_SESSION['user'])) {
+    header("Location: dashboard.php");
+    exit();
+}
+
 // Handle form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $emailInput = $_POST['email'];
     $passwordInput = $_POST['password'];
 
     // Validate email and password
-    if (empty($emailInput) && empty($passwordInput)) {
+    if (empty($emailInput)) {
         $emailError = "<span><li>Email is required.</li></span>";
+    }
+
+    if (empty($passwordInput)) {
         $passwordError = "<span><li>Password is required.</li></span>";
     }
-    
 
     // Check for valid login only if no input errors
     if (empty($emailError) && empty($passwordError)) {
@@ -33,21 +41,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         foreach ($validUsers as $user) {
             if ($user['email'] === $emailInput && $user['password'] === $passwordInput) {
                 $_SESSION['user'] = $emailInput; // Store user in session
-                header("Location: .php"); // Redirect to a welcome page or dashboard
+                header("Location: dashboard.php"); // Redirect to dashboard
                 exit();
             }
         }
         // If user not found, set error message
         $loginError = "<span><li>Invalid email.</li></span><div></div><span><li>Invalid password.</li></span>";
-        // $loginErro2 = "";
     }
 }
 
-// Check if user is already logged in to redirect them
-if (isset($_SESSION['user'])) {
-    header("Location: welcome.php");
-    exit();
-}
 ?>
 
 <!DOCTYPE html>
@@ -69,13 +71,12 @@ if (isset($_SESSION['user'])) {
         <!-- Alert for invalid login, shown based on PHP variable -->
         <?php if ($loginError || $emailError || $passwordError): ?>
             <div id="loginError" class="alert alert-danger alert-dismissible fade show" role="alert">
+                <h5><b>System Errors</b></h5>
                 <?php
                 // Display the error messages
-                echo "<h5><b>System Errors</b></h5>";
-                echo $emailError ? $emailError . "" : "";
-                echo $passwordError ? $passwordError . "" : "";
+                echo $emailError;
+                echo $passwordError;
                 echo $loginError;
-                
                 ?>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
@@ -85,7 +86,7 @@ if (isset($_SESSION['user'])) {
         <form method="POST" action="">
             <div class="mb-3">
                 <label for="email" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" value="<?php echo htmlspecialchars($emailInput ?? ''); ?>">
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
