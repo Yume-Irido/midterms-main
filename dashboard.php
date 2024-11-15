@@ -11,17 +11,9 @@
 
 <body>
 
-    <!-- <div class="mt-5">
-        <form method="POST" action="logout.php">
-            <button type="submit" class="btn btn-danger">Danger</button>
-        </form>
-    </div> -->
-
-
+<?php 
+    include "footer.php";
+?>
 </body>
 
 </html>
-
-</*?php // Start the session session_start(); // Destroy all session data session_unset(); // Removes all session
-    variables session_destroy(); // Destroys the session // Optionally, redirect the user to a login page or homepage
-    after logout header("Location: login.php"); exit(); ?* />

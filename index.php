@@ -79,8 +79,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         <?php endif; ?>
-
-        <!-- Login form -->
         <form method="POST" action="">
             <div class="mb-3">
                 <label for="email" class="form-label">Email address</label>
@@ -94,7 +92,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </form>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <?php 
+        include "footer.php";
+    ?>
 </body>
 
 </html>
