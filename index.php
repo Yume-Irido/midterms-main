@@ -1,5 +1,8 @@
 <?php
 include("function.php");
+$title = "Login";
+include "header.php";
+include "footer.php";
 
 $loginError = "";
 $emailError = "";
@@ -40,23 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-
-    <?php include "header.php"; ?>
-</head>
-
-<body class="container-fluid">
-
-
+<div class="container">
     <div class="pt-5 position-absolute top-0 start-50 translate-middle-x">
 
         <div>
@@ -104,7 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <input type="password" class="form-control" id="password" name="password"
                             placeholder="Password">
                     </div>
-                    
+
                     <div class="mb-3 pt-3">
                         <button type="submit" class="btn btn-primary w-100" name="submit">Login</button>
                     </div>
@@ -114,7 +101,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </form>
         </div>
     </div>
-<?php include "footer.php"; ?>
-</body>
-
-</html>
+</div>
