@@ -10,12 +10,11 @@ if (!isset($_SESSION['user'])) {
 // Handle logout functionality
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Unset session variables and destroy the session
-    session_unset();
-    session_destroy();
-    
-    // Redirect to login page (index.php)
-    header("Location: index.php");
-    exit(); // Make sure no code runs after the redirect
+    // session_unset();
+    // session_destroy();
+    // header("Location: index.php");
+    // exit(); 
+    include("logout.php");
 }
 ?>
 
@@ -41,7 +40,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="row col-md-12">
             <h1>Welcome to your dashboard!</h1>
 
-            <!-- Logout Form -->
             <form method="POST">
                 <button type="submit" class="btn btn-danger">Logout</button>
             </form>
