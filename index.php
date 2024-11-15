@@ -32,8 +32,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $userFound = false;
         foreach ($validUsers as $user) {
             if ($user['email'] === $emailInput && $user['password'] === $passwordInput) {
-                $_SESSION['user'] = $emailInput; // Store user in session
-                header("Location: .php"); // Redirect to a welcome page or dashboard
+                $_SESSION['user'] = $emailInput; 
+                header("Location: dashboard.php"); 
                 exit();
             }
         }
@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 // Check if user is already logged in to redirect them
 if (isset($_SESSION['user'])) {
-    header("Location: welcome.php");
+    header("Location: dashboard.php");
     exit();
 }
 ?>
