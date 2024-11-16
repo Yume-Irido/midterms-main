@@ -52,10 +52,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             exit();
         }
     } else if (isset($_POST["edit"])) {
-
+        header("Location: edit.php");
+        exit();
     }
     else if (isset($_POST["delete"])) {
-        
+
     }
     
 
