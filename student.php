@@ -13,7 +13,6 @@ if (!isset($_SESSION["user"])) {
 // Initialize variables for errors and form values
 $errors = [];
 $studentID = $firstName = $lastName = "";
-
 // Mock database (use a real database in production)
 $students = isset($_SESSION['students']) ? $_SESSION['students'] : [];
 
