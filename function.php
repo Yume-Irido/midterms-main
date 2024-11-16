@@ -1,7 +1,5 @@
 <?php
 session_start();
-
-// Example of valid users with hashed passwords for better security
 $validUsers = [
     ["email" => "user1@email.com", "password" => password_hash("pass123", PASSWORD_DEFAULT)],
     ["email" => "user2@email.com", "password" => password_hash("pass123", PASSWORD_DEFAULT)],
