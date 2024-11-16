@@ -13,7 +13,6 @@ if (!isset($_SESSION["user"])) {
 // Initialize variables for errors and form values
 $errors = [];
 $studentID = $firstName = $lastName = "";
-
 // Mock database (use a real database in production)
 $students = isset($_SESSION['students']) ? $_SESSION['students'] : [];
 
@@ -52,10 +51,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             exit();
         }
     } else if (isset($_POST["edit"])) {
-
+        header("Location: edit.php");
+        exit();
     }
     else if (isset($_POST["delete"])) {
-        
+
     }
     
 
